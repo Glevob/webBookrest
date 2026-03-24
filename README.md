@@ -2,59 +2,59 @@
 REST‑сервис для управления книгами, авторами и пользователями библиотеки с разграничением прав доступа и унифицированной обработкой ошибок в JSON‑формате.
 
 
-Описание предметной области:
+# Описание предметной области:
 Система предназначена для учёта книг и авторов и управления доступом пользователей:
-# Хранение книг с названием, датой публикации, ценой, рейтингом и описанием.
-# Хранение авторов с ФИО и уникальным email.
-# Работа с жанрами и связями «автор–книга».
-# Регистрация пользователей, вход по логину (email) и паролю, назначение ролей USER, TECHNOLOGIST, FULL.
-# Ограничение доступа к административным операциям (создание/изменение/удаление сущностей) по ролям.
-# Все ошибки (валидация, права доступа, отсутствие сущностей, технические сбои) возвращаются в виде JSON‑ответов с кодами 400, 401, 403, 404, 422 и 500
+- Хранение книг с названием, датой публикации, ценой, рейтингом и описанием.
+- Хранение авторов с ФИО и уникальным email.
+- Работа с жанрами и связями «автор–книга».
+- Регистрация пользователей, вход по логину (email) и паролю, назначение ролей USER, TECHNOLOGIST, FULL.
+- Ограничение доступа к административным операциям (создание/изменение/удаление сущностей) по ролям.
+- Все ошибки (валидация, права доступа, отсутствие сущностей, технические сбои) возвращаются в виде JSON‑ответов с кодами 400, 401, 403, 404, 422 и 500
 
 
-Стек технологий:
-# Java 21
-# Spring Boot 3 / Spring Web / Spring Data JPA / Spring Security 6
-# Hibernate (JPA‑провайдер, Bean Validation)
-# PostgreSQL
-# Lombok
-# Jakarta Validation (Bean Validation)
-# Thymeleaf для web‑страниц админки
-# Gradle для сборки
+# Стек технологий:
+- Java 21
+- Spring Boot 3 / Spring Web / Spring Data JPA / Spring Security 6
+- Hibernate (JPA‑провайдер, Bean Validation)
+- PostgreSQL
+- Lombok
+- Jakarta Validation (Bean Validation)
+- Thymeleaf для web‑страниц админки
+- Gradle для сборки
 
 
-Как запустить проект:
+#Как запустить проект:
 1. Настройка БД PostgreSQL.
 2. Сбор и запуск приложения.
 3. Запуск REST API - http://localhost:8080
 4. При старте автоматически создается пользователь (с ролью FULL) - логин as@as.com, пароль asdasd
 
 
-Описание маршрутов API:
+#Описание маршрутов API:
 1. Аутентификация
-# POST	/auth/login	- вход по логину (email) и паролю, создание сессии
-# POST	/auth/logout - выход, завершение сессии
-# POST	/api/registration	- регистрация нового пользователя
+- POST	/auth/login	- вход по логину (email) и паролю, создание сессии
+- POST	/auth/logout - выход, завершение сессии
+- POST	/api/registration	- регистрация нового пользователя
 2. Книги
-# GET	/authors_bookss	- получить список всех книг	(для авторизованных)
-# GET	/api/books/{id}	- получить книгу по id	(для авторизованных)
-# POST	/api/books	- создать книгу	(для TECHNOLOGIST и FULL)
-# PUT/PATCH	/api/books/{id}	- обновить книгу	(для TECHNOLOGIST и FULL)
-# DELETE	/api/books/{id}	- удалить книгу	(для TECHNOLOGIST и FULL)
+- GET	/authors_bookss	- получить список всех книг	(для авторизованных)
+- GET	/api/books/{id}	- получить книгу по id	(для авторизованных)
+- POST	/api/books	- создать книгу	(для TECHNOLOGIST и FULL)
+- PUT/PATCH	/api/books/{id}	- обновить книгу	(для TECHNOLOGIST и FULL)
+- DELETE	/api/books/{id}	- удалить книгу	(для TECHNOLOGIST и FULL)
 3. Авторы
-# GET	/authors	- список авторов	(для TECHNOLOGIST и FULL)
-# GET	/authors/{id}	- автор по id	(для TECHNOLOGIST и FULL)
-# POST	/authors	- создать автора	(для TECHNOLOGIST и FULL)
-# PUT	/authors/{id}	- обновить автора	(для TECHNOLOGIST и FULL)
-# DELETE	/api/authors/{id}	- удалить автора	(для TECHNOLOGIST и FULL)
+- GET	/authors	- список авторов	(для TECHNOLOGIST и FULL)
+- GET	/authors/{id}	- автор по id	(для TECHNOLOGIST и FULL)
+- POST	/authors	- создать автора	(для TECHNOLOGIST и FULL)
+- PUT	/authors/{id}	- обновить автора	(для TECHNOLOGIST и FULL)
+- DELETE	/api/authors/{id}	- удалить автора	(для TECHNOLOGIST и FULL)
 4. Администрирование пользователей
-# GET	/api/admin/users	- список пользователей	(для FULL)
-# GET	/api/admin/users/{id}	- пользователь по id	(для FULL)
-# PUT	/api/admin/users/{id}	- обновить логин/пароль/роль	(для FULL)
-# DELETE	/api/admin/users/{id}	- удалить пользователя	(для FULL)
+- GET	/api/admin/users	- список пользователей	(для FULL)
+- GET	/api/admin/users/{id}	- пользователь по id	(для FULL)
+- PUT	/api/admin/users/{id}	- обновить логин/пароль/роль	(для FULL)
+- DELETE	/api/admin/users/{id}	- удалить пользователя	(для FULL)
 
 
-Примеры запросов и ответов:
+#Примеры запросов и ответов:
 1. POST http://localhost:8080/api/books
 Тело запроса:
 {
@@ -200,7 +200,7 @@ GET http://localhost:8080/api/admin/users/1
 }
 
 
-Примеры ошибок:
+# Примеры ошибок:
 Все ошибки возвращаются в JSON‑формате вида:
 {
   "codeId": -6472092349490575199,
@@ -311,7 +311,7 @@ POST http://localhost:8080/api/books
 }
 
 
-Структура проекта:
+# Структура проекта:
 main.java.com.example.demo:
   config:
     DataInitializer
