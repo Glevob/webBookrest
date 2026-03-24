@@ -1,0 +1,296 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1773995184879-1
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_author_seq
+            startValue: 1
+  - changeSet:
+      id: 1773995184879-2
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_authors_books_seq
+            startValue: 1
+  - changeSet:
+      id: 1773995184879-3
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_book_seq
+            startValue: 1
+  - changeSet:
+      id: 1773995184879-4
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_genre_seq
+            startValue: 1
+  - changeSet:
+      id: 1773995184879-5
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_id_seq
+            startValue: 1
+  - changeSet:
+      id: 1773995184879-6
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_role_id_seq
+            startValue: 1
+  - changeSet:
+      id: 1773995184879-7
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_author
+                  name: id_author
+                  type: BIGINT
+              - column:
+                  name: author_name
+                  type: VARCHAR(100)
+              - column:
+                  name: author_surname
+                  type: VARCHAR(100)
+              - column:
+                  name: author_middlename
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: author_email
+                  type: VARCHAR(150)
+            tableName: author
+  - changeSet:
+      id: 1773995184879-8
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_authors_books
+                  name: id_authors_books
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: id_book
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: id_author
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: author_role
+                  type: VARCHAR(100)
+            tableName: authors_books
+  - changeSet:
+      id: 1773995184879-9
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_book
+                  name: id_book
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: book_title
+                  type: VARCHAR(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: date_public
+                  type: DATE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: star
+                  type: INT
+              - column:
+                  name: desript_book
+                  type: VARCHAR(40000)
+              - column:
+                  name: cover
+                  type: VARCHAR(255)
+              - column:
+                  name: id_genre
+                  type: BIGINT
+            tableName: book
+  - changeSet:
+      id: 1773995184879-10
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_genre
+                  name: id_genre
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: genre_name
+                  type: VARCHAR(100)
+            tableName: genre
+  - changeSet:
+      id: 1773995184879-11
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_roles
+                  name: id_user_role
+                  type: BIGINT
+              - column:
+                  name: user_authority
+                  type: SMALLINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: user_roles
+  - changeSet:
+      id: 1773995184879-12
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users
+                  name: id_user
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: login
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: password
+                  type: VARCHAR(255)
+            tableName: users
+  - changeSet:
+      id: 1773995184879-13
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: author_email
+            constraintName: uc_author_author_email
+            tableName: author
+  - changeSet:
+      id: 1773995184879-14
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: genre_name
+            constraintName: uc_genre_genre_name
+            tableName: genre
+  - changeSet:
+      id: 1773995184879-15
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: login
+            constraintName: uc_users_login
+            tableName: users
+  - changeSet:
+      id: 1773995184879-16
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_author
+            baseTableName: authors_books
+            constraintName: FK_AUTHORS_BOOKS_ON_ID_AUTHOR
+            referencedColumnNames: id_author
+            referencedTableName: author
+  - changeSet:
+      id: 1773995184879-17
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_book
+            baseTableName: authors_books
+            constraintName: FK_AUTHORS_BOOKS_ON_ID_BOOK
+            referencedColumnNames: id_book
+            referencedTableName: book
+  - changeSet:
+      id: 1773995184879-18
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_genre
+            baseTableName: book
+            constraintName: FK_BOOK_ON_ID_GENRE
+            referencedColumnNames: id_genre
+            referencedTableName: genre
+  - changeSet:
+      id: 1773995184879-19
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_roles
+            constraintName: FK_USER_ROLES_ON_USER
+            referencedColumnNames: id_user
+            referencedTableName: users
+
