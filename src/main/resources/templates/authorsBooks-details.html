@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Связка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div th:insert="~{blocks/header :: header}"></div>
+
+<main class="container py-4" style="padding-top: 4.5rem;">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="h4 mb-0">Связка</h1>
+                <a href="/authorsBooks" class="btn btn-outline-secondary btn-sm">
+                    ← Ко всем связкам
+                </a>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <div class="row g-3">
+                        <div class="col-12 col-md-7">
+                            <h5 class="card-title mb-3"
+                                th:text="${authorsBooks.book.bookTitle}">
+                                Название книги
+                            </h5>
+
+                            <p class="mb-1">
+                                <strong>Автор:</strong>
+                                <span th:text="${authorsBooks.author.authorSurname} + ' ' +
+                                               ${authorsBooks.author.authorName} + ' ' +
+                                               ${authorsBooks.author.authorMiddlename}">
+                                </span>
+                            </p>
+
+                            <p class="text-muted mb-3">
+                                <strong>Роль в создании:</strong>
+                                <span th:text="${authorsBooks.authorRole} ?: 'ассистент'"></span>
+                            </p>
+                        </div>
+
+                        <div class="col-12 col-md-5 text-center">
+                            <img th:src="@{'/uploads/' + ${authorsBooks.book.cover}}"
+                                 alt="Обложка книги"
+                                 class="img-fluid rounded border"
+                                 style="max-width: 260px; max-height: 260px; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex gap-2">
+                        <a th:href="@{/authorsBooks/{id}/edit(id=${authorsBooks.idAuthorsBooks})}"
+                           class="btn btn-primary">
+                            Редактировать
+                        </a>
+
+                        <form th:action="@{/authorsBooks/{id}/delete(id=${authorsBooks.idAuthorsBooks})}"
+                              method="post"
+                              onsubmit="return confirm('Удалить эту связку?');">
+                            <button class="btn btn-danger" type="submit">
+                                Удалить
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<div th:insert="~{blocks/footer :: footer}"></div>
+</body>
+</html>

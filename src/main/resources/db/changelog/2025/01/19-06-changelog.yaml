@@ -1,0 +1,560 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1737317696156-1
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_addr_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-2
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_author_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-3
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_authors_books_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-4
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_book_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-5
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_employee_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-6
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_genre_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-7
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_order_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-8
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_passport_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-9
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_post_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-10
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: id_printing_house_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-11
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_id_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-12
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_role_id_seq
+            startValue: 1
+  - changeSet:
+      id: 1737317696156-13
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_addres
+                  name: id_addres
+                  type: BIGINT
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  name: street
+                  type: VARCHAR(255)
+              - column:
+                  name: building
+                  type: INT
+              - column:
+                  name: flat
+                  type: INT
+            tableName: addres
+  - changeSet:
+      id: 1737317696156-14
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_author
+                  name: id_author
+                  type: BIGINT
+              - column:
+                  name: author_name
+                  type: VARCHAR(255)
+              - column:
+                  name: author_surname
+                  type: VARCHAR(255)
+              - column:
+                  name: author_middlename
+                  type: VARCHAR(255)
+              - column:
+                  name: author_email
+                  type: VARCHAR(255)
+            tableName: author
+  - changeSet:
+      id: 1737317696156-15
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_authors_books
+                  name: id_authors_books
+                  type: BIGINT
+              - column:
+                  name: id_book
+                  type: BIGINT
+              - column:
+                  name: id_author
+                  type: BIGINT
+              - column:
+                  name: comment
+                  type: VARCHAR(255)
+            tableName: authors_books
+  - changeSet:
+      id: 1737317696156-16
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_book
+                  name: id_book
+                  type: BIGINT
+              - column:
+                  name: book_title
+                  type: VARCHAR(255)
+              - column:
+                  name: book_page
+                  type: INT
+              - column:
+                  name: cover
+                  type: VARCHAR(255)
+              - column:
+                  name: id_genre
+                  type: BIGINT
+            tableName: book
+  - changeSet:
+      id: 1737317696156-17
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_employee
+                  name: id_employee
+                  type: BIGINT
+              - column:
+                  name: id_post
+                  type: BIGINT
+              - column:
+                  name: id_addres
+                  type: BIGINT
+              - column:
+                  name: id_passport
+                  type: BIGINT
+              - column:
+                  name: employee_email
+                  type: VARCHAR(255)
+              - column:
+                  name: employee_mobile
+                  type: VARCHAR(255)
+              - column:
+                  name: employee_inn
+                  type: VARCHAR(255)
+            tableName: employee
+  - changeSet:
+      id: 1737317696156-18
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_genre
+                  name: id_genre
+                  type: BIGINT
+              - column:
+                  name: genre_name
+                  type: VARCHAR(255)
+            tableName: genre
+  - changeSet:
+      id: 1737317696156-19
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_order
+                  name: id_order
+                  type: BIGINT
+              - column:
+                  name: date_in_order
+                  type: VARCHAR(255)
+              - column:
+                  name: date_out_order
+                  type: VARCHAR(255)
+              - column:
+                  name: id_addres
+                  type: BIGINT
+              - column:
+                  name: id_authors_books
+                  type: BIGINT
+              - column:
+                  name: id_printing_house
+                  type: BIGINT
+            tableName: order
+  - changeSet:
+      id: 1737317696156-20
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_passport
+                  name: id_passport
+                  type: BIGINT
+              - column:
+                  name: passport_series
+                  type: BIGINT
+              - column:
+                  name: passport_number
+                  type: BIGINT
+              - column:
+                  name: place_of_issue
+                  type: VARCHAR(255)
+              - column:
+                  name: date_of_issue
+                  type: VARCHAR(255)
+              - column:
+                  name: photo
+                  type: VARCHAR(255)
+            tableName: passport
+  - changeSet:
+      id: 1737317696156-21
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_post
+                  name: id_post
+                  type: BIGINT
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+            tableName: post
+  - changeSet:
+      id: 1737317696156-22
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_printing_house
+                  name: id_printing_house
+                  type: BIGINT
+              - column:
+                  name: print_title
+                  type: VARCHAR(255)
+              - column:
+                  name: id_addres
+                  type: BIGINT
+              - column:
+                  name: print_email
+                  type: VARCHAR(255)
+              - column:
+                  name: print_mobile
+                  type: VARCHAR(255)
+              - column:
+                  name: print_logo
+                  type: VARCHAR(255)
+            tableName: printing_house
+  - changeSet:
+      id: 1737317696156-23
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_roles
+                  name: id_user_role
+                  type: BIGINT
+              - column:
+                  name: user_authority
+                  type: SMALLINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: user_roles
+  - changeSet:
+      id: 1737317696156-24
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_users
+                  name: id_user
+                  type: BIGINT
+              - column:
+                  name: login
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(255)
+              - column:
+                  name: id_employee
+                  type: BIGINT
+            tableName: users
+  - changeSet:
+      id: 1737317696156-25
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_author
+            baseTableName: authors_books
+            constraintName: FK_AUTHORS_BOOKS_ON_ID_AUTHOR
+            referencedColumnNames: id_author
+            referencedTableName: author
+  - changeSet:
+      id: 1737317696156-26
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_book
+            baseTableName: authors_books
+            constraintName: FK_AUTHORS_BOOKS_ON_ID_BOOK
+            referencedColumnNames: id_book
+            referencedTableName: book
+  - changeSet:
+      id: 1737317696156-27
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_genre
+            baseTableName: book
+            constraintName: FK_BOOK_ON_ID_GENRE
+            referencedColumnNames: id_genre
+            referencedTableName: genre
+  - changeSet:
+      id: 1737317696156-28
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_addres
+            baseTableName: employee
+            constraintName: FK_EMPLOYEE_ON_ID_ADDRES
+            referencedColumnNames: id_addres
+            referencedTableName: addres
+  - changeSet:
+      id: 1737317696156-29
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_passport
+            baseTableName: employee
+            constraintName: FK_EMPLOYEE_ON_ID_PASSPORT
+            referencedColumnNames: id_passport
+            referencedTableName: passport
+  - changeSet:
+      id: 1737317696156-30
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_post
+            baseTableName: employee
+            constraintName: FK_EMPLOYEE_ON_ID_POST
+            referencedColumnNames: id_post
+            referencedTableName: post
+  - changeSet:
+      id: 1737317696156-31
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_addres
+            baseTableName: order
+            constraintName: FK_ORDER_ON_ID_ADDRES
+            referencedColumnNames: id_addres
+            referencedTableName: addres
+  - changeSet:
+      id: 1737317696156-32
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_authors_books
+            baseTableName: order
+            constraintName: FK_ORDER_ON_ID_AUTHORS_BOOKS
+            referencedColumnNames: id_authors_books
+            referencedTableName: authors_books
+  - changeSet:
+      id: 1737317696156-33
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_printing_house
+            baseTableName: order
+            constraintName: FK_ORDER_ON_ID_PRINTING_HOUSE
+            referencedColumnNames: id_printing_house
+            referencedTableName: printing_house
+  - changeSet:
+      id: 1737317696156-34
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_addres
+            baseTableName: printing_house
+            constraintName: FK_PRINTING_HOUSE_ON_ID_ADDRES
+            referencedColumnNames: id_addres
+            referencedTableName: addres
+  - changeSet:
+      id: 1737317696156-35
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_employee
+            baseTableName: users
+            constraintName: FK_USERS_ON_ID_EMPLOYEE
+            referencedColumnNames: id_employee
+            referencedTableName: employee
+  - changeSet:
+      id: 1737317696156-36
+      author: ??? (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: user_roles
+            constraintName: FK_USER_ROLES_ON_USER
+            referencedColumnNames: id_user
+            referencedTableName: users
+

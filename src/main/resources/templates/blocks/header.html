@@ -1,0 +1,82 @@
+<div th:fragment="header"
+     xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <h5 class="my-0 mr-md-auto font-weight-normal">BookWorm</h5>
+
+            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto align-items-center gap-2">
+
+                <!-- Неавторизованный -->
+                <div sec:authorize="isAnonymous()">
+                    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                        <a class="nav-link px-2 text-secondary" href="/">Главная</a>
+                        <a class="btn btn-outline-primary me-2" href="/login">Вход</a>
+                        <a class="btn btn-primary" href="/registration">Регистрация</a>
+                    </nav>
+                </div>
+
+                <!-- USER -->
+                <div sec:authorize="hasAuthority('USER')">
+                    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                        <a class="nav-link px-2 text-secondary" href="/">Главная</a>
+                        <a class="nav-link px-2 text-black" href="/authorsBooks">Книги</a>
+                        <button type="button"
+                                class="btn btn-outline-primary"
+                                onclick="logoutUser()">
+                            Выход
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- TECHNOLOGIST -->
+                <div sec:authorize="hasAuthority('TECHNOLOGIST')">
+                    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                        <a class="nav-link px-2 text-secondary" href="/">Главная</a>
+                        <a class="nav-link px-2 text-black" href="/book">Книги</a>
+                        <a class="nav-link px-2 text-black" href="/author">Авторы</a>
+                        <a class="nav-link px-2 text-black" href="/authorsBooks">Связки</a>
+                        <button type="button"
+                                class="btn btn-outline-primary"
+                                onclick="logoutUser()">
+                            Выход
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- FULL -->
+                <div sec:authorize="hasAuthority('FULL')">
+                    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                        <a class="nav-link px-2 text-secondary" href="/">Главная</a>
+                        <a class="nav-link px-2 text-black" href="/book">Книги</a>
+                        <a class="nav-link px-2 text-black" href="/author">Авторы</a>
+                        <a class="nav-link px-2 text-black" href="/authorsBooks">Связки</a>
+                        <a class="nav-link px-2 text-black" href="/admin/users">Пользователи</a>
+                        <button type="button"
+                                class="btn btn-outline-primary"
+                                onclick="logoutUser()">
+                            Выход
+                        </button>
+                    </nav>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        function logoutUser() {
+            fetch('/auth/logout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+                .then(response => {
+                    // 204 / 200 — всё равно выходим на главную
+                    window.location.href = '/';
+                })
+                .catch(err => {
+                    console.error('Ошибка при выходе:', err);
+                    window.location.href = '/';
+                });
+        }
+    </script>
+</div>
